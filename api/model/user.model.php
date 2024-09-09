@@ -1,5 +1,5 @@
 <?php
-require_once('Model.php');
+require_once('.model.php');
 require_once('vendor/autoload.php');  // Incluye autoload.php de Composer para JWT y PHPMailer
 
 use App\Mailer;

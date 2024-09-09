@@ -1,8 +1,10 @@
 <?php
-require_once("model.php");
+require_once("./model.php");
 
 class ProductsModel extends Model
 {
+
+    
     public function getAllProducts()
     {
        $sql = "SELECT * FROM productos p INNER JOIN categorias c ON  p.categoria_id  = c.id";

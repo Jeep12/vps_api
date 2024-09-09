@@ -1,7 +1,7 @@
 <?php
-require_once ("api/model/product.model.php");
-require_once ("api/view/api-view.php");
-require_once ("api/model/user.model.php");
+require_once ("../model/product.model.php");
+require_once ("../view/api-view.php");
+require_once ("../model/user.model.php");
 
 class ProductController
 {

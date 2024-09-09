@@ -1,7 +1,7 @@
 <?php
-require_once "api/model/user.model.php";
-require_once "api/view/api-view.php";
-require_once "api/utils/JwtMiddleware.php";
+require_once "../model/user.model.php";
+require_once "../view/api-view.php";
+require_once "../utils/JwtMiddleware.php";
 define('CACHE_DIR', __DIR__ . '/cache/');
 // Asegúrate de que la ruta sea correcta
 use Api\Utils\JwtMiddleware;
