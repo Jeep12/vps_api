@@ -1,4 +1,5 @@
 <?php
+set_include_path(get_include_path() . PATH_SEPARATOR . '/var/www/html/vps_api/api/model' . PATH_SEPARATOR . '/var/www/html/vps_api/api/controller' . PATH_SEPARATOR . '/var/www/html/vps_api/api/view' . PATH_SEPARATOR . '/var/www/html/vps_api/api/utils');
 
 require_once("libs/Router.php");
 require_once("api/controller/UserController.php");
