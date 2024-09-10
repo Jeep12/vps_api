@@ -1,4 +1,6 @@
 <?php
+
+
 require 'vendor/autoload.php';
 
 use Dotenv\Dotenv;
@@ -17,5 +19,6 @@ $parametros = [
     'jwt_secret_key' => $_ENV['JWT_SECRET_KEY'],
     'firebase_service_account' => $_ENV['FIREBASE_SERVICE_ACCOUNT']
 ];
+
 
 ?>

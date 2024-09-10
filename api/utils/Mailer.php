@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -15,19 +14,23 @@ class Mailer {
         $this->mail->isSMTP();
         $this->mail->Host = 'smtp.gmail.com';
         $this->mail->SMTPAuth = true;
-        $this->mail->Username = 'encabojuan@gmail.com';
-        $this->mail->Password = $this->getSecretKeyEmail();
-        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Corrección aquí
+        $this->mail->Username = 'encabojuan@gmail.com'; // Tu correo de Gmail
+        $this->mail->Password = $this->getSecretKeyEmail(); // Contraseña o clave de aplicación
+        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Usar TLS para puerto 587
         $this->mail->Port = 587;
 
         // Configuración del remitente
-        $this->mail->setFrom('tu-email@gmail.com', 'Tu Nombre');
+        $this->mail->setFrom('encabojuan@gmail.com', 'Tu Nombre'); // Debe ser el mismo que Username
+
+        // Habilitar depuración para ver errores detallados
     }
-    private function getSecretKeyEmail()
-    {
-        global $parametros;
-        return $parametros['key_email'];
-    }
+
+private function getSecretKeyEmail()
+{
+    global $parametros;
+    // Asegúrate de que esta clave sea correcta, y no tenga guiones ni otros caracteres especiales si es necesario
+    return str_replace('-', ' ', $parametros['key_email']); // Reemplaza '-' por espacio si es necesario
+}
     public function sendMail($to, $subject, $body) {
         try {
             $this->mail->addAddress($to);

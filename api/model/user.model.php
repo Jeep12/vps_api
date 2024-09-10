@@ -105,7 +105,7 @@ class UserModel extends Model
         $mailer = new Mailer();
 
         $query = $this->pdo->prepare('INSERT INTO usuarios (id, admin, nick, nombre, apellido, direccion, telefono, email, password, code_verification) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $query->execute([$id, false, $nick, $nombre, $apellido, $direccion, $telefono, $email, $passwordHashing, $verificationToken]);
+        $query->execute([$id, 0, $nick, $nombre, $apellido, $direccion, $telefono, $email, $passwordHashing, $verificationToken]);
 
         $userId = $this->pdo->lastInsertId();
         $verificationLink = $this->generateVerificationLink($verificationToken);

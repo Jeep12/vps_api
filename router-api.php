@@ -4,7 +4,10 @@ require_once("libs/Router.php");
 require_once("api/controller/ProductController.php");
 require_once("api/controller/UserController.php");
 require_once("api/controller/TicketController.php");
-
+// Cabeceras CORS
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Custom-Header");
 
 
 

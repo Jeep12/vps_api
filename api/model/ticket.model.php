@@ -1,5 +1,4 @@
 <?php
-echo "pase porca";
 require_once("model.php");
 
 class TicketModel extends Model {

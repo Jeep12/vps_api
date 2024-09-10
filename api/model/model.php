@@ -32,7 +32,9 @@ require_once(__DIR__ . '/../../config.php');
             try {
                 $this->pdo = new PDO($dsn, $user, $password);
             } catch (PDOException $e) {
-                echo $e->getMessage();
+		   error_log("Database Connection Error: " . $e->getMessage());
+        echo json_encode(['success' => false, 'message' => 'Database connection error: ' . $e->getMessage()]);
+        exit();
             }
         }
 
