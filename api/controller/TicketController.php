@@ -1,6 +1,6 @@
 <?php
-require_once("api/view/api-view.php");
-require_once("api/model/ticket.model.php");
+require_once ("api/view/api-view.php");
+require_once ("api/model/ticket.model.php");
 
 class TicketController {
 

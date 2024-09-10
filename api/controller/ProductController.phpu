@@ -10,8 +10,8 @@ class ProductController
     public function getAllProducts()
     {
         // Verificar si los archivos existen
-        $productModelPath =  'api/model/product.model.php';
-        $apiViewPath =  'api/view/api-view.php';
+        $productModelPath = 'api/model/product.model.php';
+        $apiViewPath = 'api/view/api-view.php';
 
         if (file_exists($productModelPath) && file_exists($apiViewPath)) {
             echo "Los archivos 'product.model.php' y 'api-view.php' se encuentran en las rutas especificadas.\n";
