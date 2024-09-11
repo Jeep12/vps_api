@@ -57,6 +57,9 @@ class JwtMiddleware
         $key = $this->getJWTSecretKey();
         try {
             $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
+
+        error_log("Decoded JWT: " . print_r($decoded, true)); // Verifica el contenido del token decodificado
+
             return $decoded;
         } catch (\Exception $e) {
             error_log("JWT Validation Error: " . $e->getMessage());

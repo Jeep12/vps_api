@@ -173,27 +173,35 @@ class UserController
             }
         }
     }
-    public function verifymail()
-    {
-        // Verifica si el token está presente en la URL
-        if (isset($_GET['token'])) {
-            $token = $_GET['token'];
 
-            // Llama al modelo para verificar el token
+
+
+
+
+
+
+public function verifymail()
+{
+    // Verifica si el token está presente en la URL
+    if (isset($_GET['token'])) {
+        $token = $_GET['token'];
+        // Llama al modelo para verificar el token
             $verified = $this->modelUsers->verifyUserByToken($token);
 
-            if ($verified) {
-                // Responde con un mensaje de éxito
-                echo "<h1>Correo verificado con exitó! ";
-            } else {
-                // Responde con un mensaje de error si el token no es válido
-                $this->view->response(['message' => 'Token de verificación inválido o ya utilizado.'], 400);
-            }
+        if ($verified) {
+            // Responde con un mensaje de éxito
+            echo "<h1>Correo verificado con éxito!</h1>";
         } else {
-            // Responde con un mensaje de error si el token no está presente
-            $this->view->response(['message' => 'Token de verificación no proporcionado.'], 400);
+            // Responde con un mensaje de error si el token no es válido
+            $this->view->response(['message' => 'Token de verificación inválido o ya utilizado.'], 400);
         }
+    } else {
+        // Responde con un mensaje de error si el token no está presente
+        $this->view->response(['message' => 'Token de verificación no proporcionado.'], 400);
     }
+}
+
+
     public function getUserInfo()
     {
         $customHeader = $_SERVER['HTTP_X_CUSTOM_HEADER'] ?? null;

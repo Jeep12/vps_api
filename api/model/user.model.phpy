@@ -132,50 +132,30 @@ class UserModel extends Model
         return $user;
     }
 
-
-
-
-
 public function verifyUserByToken($token)
 {
     $jwtMiddleware = new \Api\Utils\JwtMiddleware();
     $decoded = $jwtMiddleware->validateJWT($token);
 
-    if ($decoded) {
-        $email = $decoded->email;
-        if (!empty($email)) {
-            $user = $this->getUserByEmail($email);
-            if ($user && isset($user->id)) {
-                $id = $user->id;
-                try {
-                    $query = $this->pdo->prepare('UPDATE usuarios SET emailVerified = 1, code_verification = NULL WHERE id = ?');
-                    $query->execute([$id]);
-                    return true;
-                } catch (\PDOException $e) {
-                    // Imprime el mensaje de error de la consulta SQL
-                    echo "Error: " . $e->getMessage();
-                    return false;
-                }
-            } else {
-                echo "User not found or ID is not set.";
-            }
-        } else {
-            echo "Email is empty.";
-        }
-    } else {
-        echo "Failed to decode token: " . $jwtMiddleware->getErrorMessage() . "\n";
-    }
+    error_log("Decoded JWT: " . print_r($decoded, true));
 
+    if ($decoded && isset($decoded->email)) {
+        $user = $this->getUserByEmail($decoded->email);
+        if ($user) {
+            $query = $this->pdo->prepare('UPDATE usuarios SET emailVerified = 1, code_verification = NULL WHERE id = ?');
+            $query->execute([$user->id]);
+            return true;
+        }
+    }
     return false;
 }
-
-
 
 
     private function generateVerificationLink($token)
     {
 
         return "https://l2genesis.online/vps_api/api/verifyEmail?token=$token";
+
     }
     private function getVerificationEmailContent($email, $verificationLink, $nombre, $apellido)
     {

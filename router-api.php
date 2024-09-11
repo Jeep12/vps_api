@@ -11,7 +11,6 @@ header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 
 
 
-
 // Cabeceras CORS
 
 // Manejo de solicitudes OPTIONS (preflight request)
